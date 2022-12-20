@@ -1,7 +1,7 @@
 ﻿name;part_of;type
 restaurant_1;1;restaurant
 pool_1;1;pool
-pool_2;2;pool
-restaurant_2;2;restaurant
+pool_2;3;pool
+restaurant_2;3;restaurant
 gym_1;1;gym
-gym_2;2;gym
+gym_2;3;gym

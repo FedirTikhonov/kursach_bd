@@ -148,8 +148,6 @@ $$;
 
 DROP FUNCTION room_usage_history(input_room_id INTEGER);
 
-SELECT * FROM room_usage_history(512);
-
 CREATE OR REPLACE FUNCTION calculate_price_per_stay(days_num INTEGER, input_room_id INTEGER)
 RETURNS INTEGER
     LANGUAGE plpgsql
