@@ -21,5 +21,5 @@ WHERE id = 11;
 
 SELECT * FROM rooms WHERE id > 500;
 
-DELETE FROM bookings WHERE id=11;
+DELETE FROM clients WHERE id=26;
 

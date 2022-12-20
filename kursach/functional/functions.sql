@@ -47,7 +47,7 @@ AS
         RAISE NOTICE 'CLIENT WITH ID %, NAME %, SURNAME % WAS DELETED',
             OLD.id, OLD.name, OLD.surname;
         RETURN NEW;
-    END;
+    END
     $$;
 
 
@@ -128,3 +128,39 @@ AS
         RETURN NEW;
     END;
     $$;
+
+CREATE OR REPLACE FUNCTION room_usage_history(input_room_id INTEGER)
+    RETURNS TABLE(
+        used_room_id INTEGER,
+        client_id INTEGER,
+        client_name VARCHAR(32),
+        client_surname VARCHAR(32),
+        check_in_date DATE,
+        check_out_date DATE
+                 )
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT * FROM rooms_and_clients WHERE room_id = input_room_id ORDER BY check_in_date;
+END
+$$;
+
+DROP FUNCTION room_usage_history(input_room_id INTEGER);
+
+SELECT * FROM room_usage_history(512);
+
+CREATE OR REPLACE FUNCTION calculate_price_per_stay(days_num INTEGER, input_room_id INTEGER)
+RETURNS INTEGER
+    LANGUAGE plpgsql
+AS $$
+    DECLARE stay_price INTEGER := 0;
+        daily_room_price INTEGER := 0;
+    BEGIN
+        SELECT daily_price FROM rooms WHERE id = input_room_id INTO daily_room_price;
+        stay_price := daily_room_price * days_num;
+        RETURN stay_price;
+    END
+    $$;
+
+SELECT * FROM calculate_price_per_stay(120, 13);
