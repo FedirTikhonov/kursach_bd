@@ -13,16 +13,6 @@ CREATE TABLE clients(
     email VARCHAR(50)
 );
 
-CREATE TABLE clients_to_optimise(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(32),
-    surname VARCHAR(32),
-    phone VARCHAR(12),
-    passport VARCHAR(9) UNIQUE,
-    credit_card VARCHAR(16),
-    email VARCHAR(50)
-);
-
 CREATE TABLE travel_agency(
     id SERIAL PRIMARY KEY,
     name VARCHAR(32) UNIQUE,

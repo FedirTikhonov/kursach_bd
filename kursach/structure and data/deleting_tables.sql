@@ -8,4 +8,3 @@ DROP TABLE transport;
 DROP TABLE hotel_employees;
 DROP TABLE hotel;
 DROP TABLE hotel_business;
-DROP TABLE clients_to_optimise;

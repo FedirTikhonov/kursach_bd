@@ -19,5 +19,7 @@ UPDATE bookings SET client_id = 1, agency_id = 1, room_id = 1,
                     check_out_date = '2022-01-20'
 WHERE id = 11;
 
+SELECT * FROM rooms WHERE id > 500;
+
 DELETE FROM bookings WHERE id=11;
 
