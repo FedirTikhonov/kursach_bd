@@ -1,0 +1,5 @@
+﻿name;belongs_to;address;rating
+hotel_1;1;address_1;4.6
+hotel_2;1;address_2;4.7
+hotel_3;2;address_3;4.8
+hotel_4;2;address_4;4.9

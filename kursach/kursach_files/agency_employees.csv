@@ -1,0 +1,11 @@
+﻿name;surname;works_at;charisma;wage
+agency_employee_name_1;agency_employee_surname_1;1;very charismatic;25
+agency_employee_name_2;agency_employee_surname_2;1;charismatic;23
+agency_employee_name_3;agency_employee_surname_3;2;very charismatic;25
+agency_employee_name_4;agency_employee_surname_4;2;not really;20
+agency_employee_name_5;agency_employee_surname_5;3;very charismatic;25
+agency_employee_name_6;agency_employee_surname_6;3;not really;18
+agency_employee_name_7;agency_employee_surname_7;4;very charismatic;25
+agency_employee_name_8;agency_employee_surname_8;4;not at all;16
+agency_employee_name_9;agency_employee_surname_9;5;a bit;19
+agency_employee_name_10;agency_employee_surname_10;5;charismatic;23

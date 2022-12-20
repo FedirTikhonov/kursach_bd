@@ -1,0 +1,7 @@
+﻿type;cost;belongs_to
+sedan;20000;1
+truck;40000;2
+van;15000;3
+sedan;17000;4
+truck;25000;3
+van;22500;2
