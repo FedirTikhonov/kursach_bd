@@ -69,6 +69,7 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 AS
     $$
+    DECLARE b_row bookings%rowtype;
     BEGIN
         IF NEW.client_id <> OLD.client_id THEN
             RAISE NOTICE
@@ -100,8 +101,16 @@ AS
                 'THE BOOKING WITH ID % HAD HIS CREDIT CARD CHANGED FROM % TO %'
                 , OLD.id, OLD.check_out_date, NEW.check_out_date;
         end if;
+        FOR b_row IN SELECT * FROM bookings LOOP
+            IF b_row.room_id = NEW.room_id AND(b_row.check_in_date >= NEW.check_in_date AND
+                                               b_row.check_in_date <= NEW.check_out_date OR
+                                               b_row.check_out_date >= NEW.check_in_date AND
+                                               b_row.check_out_date <= NEW.check_out_date) THEN
+                RAISE EXCEPTION 'NEW BOOKING ID=% IS OVERLAID WITH ANOTHER ONE ID=%', NEW.id, b_row.id;
+            END IF;
+            END LOOP;
         RETURN NEW;
-    END;
+    END
     $$;
 
 CREATE OR REPLACE FUNCTION execute_on_delete_bookings()
@@ -122,9 +131,18 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 AS
     $$
+    DECLARE b_row bookings%rowtype;
     BEGIN
         RAISE NOTICE 'A NEW BOOKING WITH ID % CLIENT ID % ROOM ID % WAS ADDED',
             NEW.id, NEW.client_id, NEW.room_id;
+        FOR b_row IN SELECT * FROM bookings LOOP
+            IF b_row.room_id = NEW.room_id AND(b_row.check_in_date >= NEW.check_in_date AND
+                                               b_row.check_in_date <= NEW.check_out_date OR
+                                               b_row.check_out_date >= NEW.check_in_date AND
+                                               b_row.check_out_date <= NEW.check_out_date) THEN
+                RAISE EXCEPTION 'NEW BOOKING ID=% IS OVERLAID WITH ANOTHER ONE ID=%', NEW.id, b_row.id;
+            END IF;
+            END LOOP;
         RETURN NEW;
     END;
     $$;

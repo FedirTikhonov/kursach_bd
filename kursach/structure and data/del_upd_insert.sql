@@ -12,11 +12,11 @@ SELECT * FROM bookings;
 
 INSERT INTO bookings(client_id, room_id, agency_id, price,
                      check_in_date, check_out_date)
-VALUES (6, 6, 4, 400, '2022-12-20', '2022-12-25');
+VALUES (2, 1, 1, 1, '2022-12-12', '2022-12-17');
 
-UPDATE bookings SET client_id = 1, agency_id = 1, room_id = 1,
-                    price = 1, check_in_date = '2022-01-01',
-                    check_out_date = '2022-01-20'
+UPDATE bookings SET client_id = 7, agency_id = 2, room_id = 2,
+                    price = 1, check_in_date = '2022-12-12',
+                    check_out_date = '2022-12-15'
 WHERE id = 2013;
 
 SELECT * FROM rooms WHERE id > 500;
