@@ -28,10 +28,11 @@ FROM hotel_employees
 INNER JOIN hotel on hotel.id = hotel_employees.works_at
 ORDER BY profession;
 --5
-SELECT travel_agency.id,
-       bookings.id
-FROM travel_agency
-INNER JOIN bookings ON travel_agency.id = bookings.agency_id;
+SELECT clients.name, clients.surname
+FROM clients
+WHERE clients.id=(SELECT hotel_employees.id
+                 FROM hotel_employees
+                 WHERE id=5);
 --6
 CREATE OR REPLACE TEMP VIEW agencies_and_bookings AS
 SELECT travel_agency.id AS agency_id,
