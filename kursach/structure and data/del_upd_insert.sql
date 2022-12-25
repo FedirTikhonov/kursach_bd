@@ -17,9 +17,9 @@ VALUES (2, 1, 1, 1, '2022-12-12', '2022-12-17');
 UPDATE bookings SET client_id = 7, agency_id = 2, room_id = 2,
                     price = 1, check_in_date = '2022-12-12',
                     check_out_date = '2022-12-15'
-WHERE id = 2013;
+WHERE id = 2010;
 
 SELECT * FROM rooms WHERE id > 500;
 
-DELETE FROM clients WHERE id=2013;
+DELETE FROM bookings WHERE id=2011;
 

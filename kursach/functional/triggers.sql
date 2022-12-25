@@ -17,13 +17,13 @@ CREATE TRIGGER client_insert
     EXECUTE PROCEDURE execute_on_insert_clients();
 
 CREATE TRIGGER bookings_update
-    AFTER UPDATE
+    BEFORE UPDATE
     ON bookings
     FOR EACH ROW
     EXECUTE PROCEDURE execute_on_update_bookings();
 
 CREATE TRIGGER booking_insert
-    AFTER INSERT
+    BEFORE INSERT
     ON bookings
     FOR EACH ROW
     EXECUTE PROCEDURE execute_on_insert_bookings();

@@ -5,44 +5,44 @@ CREATE TABLE hotel_business(
 
 CREATE TABLE clients(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(32),
-    surname VARCHAR(32),
-    phone VARCHAR(12),
-    passport VARCHAR(9) UNIQUE,
-    credit_card VARCHAR(16),
-    email VARCHAR(50)
+    name VARCHAR(32) NOT NULL,
+    surname VARCHAR(32) NOT NULL,
+    phone VARCHAR(12) NOT NULL,
+    passport VARCHAR(9) UNIQUE NOT NULL,
+    credit_card VARCHAR(16) NOT NULL,
+    email VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE travel_agency(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(32) UNIQUE,
-    contract_with INTEGER,
-    comission DECIMAL,
+    name VARCHAR(32) UNIQUE NOT NULL,
+    contract_with INTEGER NOT NULL,
+    comission DECIMAL NOT NULL,
     FOREIGN KEY(contract_with) REFERENCES hotel_business ON DELETE CASCADE
 );
 
 CREATE TABLE hotel(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(32),
-    belongs_to INTEGER,
-    address VARCHAR(32),
-    rating DECIMAL,
+    name VARCHAR(32) NOT NULL,
+    belongs_to INTEGER NOT NULL,
+    address VARCHAR(32) NOT NULL,
+    rating DECIMAL NOT NULL,
     FOREIGN KEY(belongs_to) REFERENCES hotel_business ON DELETE CASCADE
 );
 
 CREATE TABLE agency_employee(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(32),
-    surname VARCHAR(32),
-    works_at INTEGER,
-    charisma VARCHAR(32),
-    wage INTEGER,
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR(32) NOT NULL,
+    surname VARCHAR(32) NOT NULL,
+    works_at INTEGER NOT NULL,
+    charisma VARCHAR(32) NOT NULL,
+    wage INTEGER NOT NULL,
     FOREIGN KEY(works_at) REFERENCES travel_agency ON DELETE CASCADE
 );
 
 CREATE TABLE transport(
     id SERIAL PRIMARY KEY,
-    type VARCHAR(32),
+    type VARCHAR(32) NOT NULL,
     cost INTEGER,
     belongs_to INTEGER,
     FOREIGN KEY(belongs_to) REFERENCES hotel ON DELETE CASCADE
